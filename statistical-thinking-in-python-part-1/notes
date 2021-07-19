@@ -1,0 +1,40 @@
+EXPLORATORY DATA ANALYSIS ( EDA ) 
+the process of organize , plotting and summarizing your data 
+
+GRAPHICAL DATA ANALYSIS : 
+take the data in tabular form and represent it graphically 
+The greatest value of a picture is that it forces us to notice what we never expected to see.
+It is important to understand what you can do before you learn how to measure how well you seem to have done it.
+ 
+ Tnum of bins by default = 10 bins in histogram
+ The "square root rule" is a commonly-used rule of thumb for choosing the number of bins: choose the number of bins to be the square root of the number of samples.
+ 
+ 
+Histogram : 
+ different data sets looks different depends on the number of bins 
+2) we are not plotting all the data so we are losing the actual values 
+ 
+to solve the dis adv of histogram : 
+use be swarm plot 
+y-axis : quantitative data 
+ 
+there's a limit to the efficiency of bee swarm plot 
+with a big data set : the edges will overlapp 
+ 
+ 
+# Plot all ECDFs on the same plot
+_ = plt.plot(x_set , y_set)
+_ = plt.plot(x_vers,y_vers)
+_ = plt.plot(x_virg , y_virg)
+ 
+ 
+ 
+# Annotate the plot
+plt.legend(('setosa', 'versicolor', 'virginica'), loc='lower right')
+_ = plt.xlabel('petal length (cm)')
+_ = plt.ylabel('ECDF')
+ 
+# Display the plot
+plt.show()
+ 
+ 
