@@ -38,3 +38,62 @@ _ = plt.ylabel('ECDF')
 plt.show()
  
  
+-------------------------------------------------------------------------------------------------------------------
+
+Numerical summaries 
+
+1) mean : the sum of all data / num of data points 
+
+import numpy as np 
+np.mean(data) 
+
+- main problem with mean is that it heavily effected by outliers 
+- those data points whose value is far greater or less than most of the rest of the data 
+
+
+2) median : the middle value of the data set 
+- median : 50 percentile ( 50 % ) 
+- 50% of the data less than the median value and 50 % is higher 
+np.median(data) 
+
+1) sort the data 
+2) choose the data in the middle 
+------------------------------------------------------
+3) PERCENTILE 
+
+np.percentile(df['column'] , [ 25 , 50 . 75 ] ) 
+- pass a list of percentile you want 
+- percentile not a fraction (2.5th, 25th, 50th, 75th, and 97.5th. >> 2.5 , 25 , 50 , 75 , 97.5) ,  a list containing these ints/floats
+- and it returns that data that match this percentile 
+
+
+4) BOXPLOT 
+represent the dataset based on percentiles 
+
+- centre of the boxplot : 50 percentile ( median ) 
+- the edges of the boxplot : 25% , 75% 
+- the total hight of the box : contains the middle 50% of the data ( 75 - 25 = 50 % ) : called interquartile rane ( IQR ) 
+- whiskers : 1.5 IQR ( UP ) 
+- any point outside the whiskers : plotting as individual point ( OUTLIERS ) 
+- begin 2IQR is outlier 
+
+---------------------------------------
+
+# Numerical summaries 
+
+#Mean 
+import numpy as np 
+np.mean(value)
+
+#Median 
+np.median(data)
+
+#percentile 
+np.percentile(df['column'] , [25 , 50 , 75 ]) #list of percentile we want
+
+#Boxplot : Represent the dataset based on the percentiles 
+sns.boxplot( x = 'value' , y = 'value' , data = df )
+plt.xlabel('text')
+plt.ylabel('text')
+plt.show()
+because it derived from the ranking of sorted data and not on the value of the data the median is immune to the data that takes extreme values 
