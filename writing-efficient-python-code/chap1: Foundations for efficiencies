@@ -1,0 +1,73 @@
+Writing efficient code python code means : Writing efficient Python code minimizes runtime and memory usage while also following the idioms in the Zen of Python.
+1) code that specifies two concepts 
+- efficient code is fast 
+- has less latency between execution and returning results 
+- small memeory overhead 
+
+
+" Fast runtime and small memory usage depend on the task " , and the main purpuse of writing efficient code is to reduce the time and memory usage 
+
+𝐏𝐲𝐭𝐡𝐨𝐧𝐢𝐜 𝐜𝐨𝐝𝐞 == 𝐞𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐭 𝐜𝐨𝐝𝐞
+
+
+--P𝐲𝐭𝐡𝐨𝐧 𝐛𝐮𝐢𝐥𝐭 𝐢𝐧 𝐜𝐨𝐦𝐩𝐨𝐧𝐞𝐧𝐭 :
+
+𝐏𝐲𝐭𝐡𝐨𝐧 𝐛𝐮𝐢𝐥𝐭 𝐢𝐧 𝐟𝐮𝐧𝐜𝐭𝐢𝐨𝐧𝐬: 
+
+1) range() : used in order to create seq of numbers 
+
+
+𝐮𝐬𝐢𝐧𝐠 𝐏𝐲𝐭𝐡𝐨𝐧'𝐬 𝐫𝐚𝐧𝐠𝐞() 𝐟𝐮𝐧𝐜𝐭𝐢𝐨𝐧 𝐚𝐥𝐥𝐨𝐰𝐬 𝐲𝐨𝐮 𝐭𝐨 𝐜𝐫𝐞𝐚𝐭𝐞 𝐚 𝐫𝐚𝐧𝐠𝐞 𝐨𝐛𝐣𝐞𝐜𝐭 𝐨𝐟 𝐧𝐮𝐦𝐛𝐞𝐫𝐬 𝐰𝐢𝐭𝐡𝐨𝐮𝐭 𝐞𝐱𝐩𝐥𝐢𝐜𝐢𝐭𝐥𝐲 𝐭𝐲𝐩𝐢𝐧𝐠 𝐭𝐡𝐞𝐦 𝐨𝐮𝐭. 
+𝐘𝐨𝐮 𝐜𝐚𝐧 𝐜𝐨𝐧𝐯𝐞𝐫𝐭 𝐭𝐡𝐞 𝐫𝐚𝐧𝐠𝐞 𝐨𝐛𝐣𝐞𝐜𝐭 𝐢𝐧𝐭𝐨 𝐚 𝐥𝐢𝐬𝐭 𝐛𝐲 𝐮𝐬𝐢𝐧𝐠 𝐭𝐡𝐞 𝐥𝐢𝐬𝐭() 𝐟𝐮𝐧𝐜𝐭𝐢𝐨𝐧 𝐨𝐫 𝐛𝐲 𝐮𝐧𝐩𝐚𝐜𝐤𝐢𝐧𝐠 𝐢𝐭 𝐢𝐧𝐭𝐨 𝐚 𝐥𝐢𝐬𝐭 𝐮𝐬𝐢𝐧𝐠 𝐭𝐡𝐞 𝐬𝐭𝐚𝐫 𝐜𝐡𝐚𝐫𝐚𝐜𝐭𝐞𝐫 (*).
+
+
+range_var = range( start , stop ) 
+range_var = range(stop) : assume that the seq will start at 0
+range_var = range( start , end , step ) : step : increment value 
+
+-- this will return seq from start num to stop - 1 
+-- should convert it to list because range return range object 
+-- list_var = list(range_var)
+
+Built-in practice: range()
+In this exercise, you will practice using Python's built-in function range(). Remember that you can use range() in a few different ways:
+
+1) Create a sequence of numbers from 0 to a stop value (which is exclusive). This is useful when you want to create a simple sequence of numbers starting at zero:
+
+range(stop)
+
+# Example
+list(range(11))
+
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+2) Create a sequence of numbers from a start value to a stop value (which is exclusive) with a step size. This is useful when you want to create a sequence of numbers that increments by some value other than one. For example, a list of even numbers:
+
+range(start, stop, step)
+
+# Example
+list(range(2,11,2))
+
+[2, 4, 6, 8, 10]
+
+
+2) 𝐞𝐧𝐮𝐦𝐞𝐫𝐚𝐭𝐞 : return pair of index and item 
+
+x = 𝐞𝐧𝐮𝐦𝐞𝐫𝐚𝐭𝐞(seq) 
+x = list(x) 
+return list of tuple of index - value pair 
+
+- we can specify a start index of 𝐞𝐧𝐮𝐦𝐞𝐫𝐚𝐭𝐞 to start the index from this value 
+x = 𝐞𝐧𝐮𝐦𝐞𝐫𝐚𝐭𝐞(seq , start = n )
+
+ Python's built-in enumerate() function allows you to create an index for each item in the object you give it. You can use list comprehension, 
+ or even unpack the enumerate object directly into a list, to write a nice simple one-liner.
+
+3) 𝐦𝐚𝐩 : 
+map is used to apply the function to each item of the seq 
+
+𝐦𝐚𝐩( fun , seq ) 
+
+- map return an object so we should use list(map(fun,seq)) 
+- map can be used with lambda to apply defined function 
+
+
