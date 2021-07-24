@@ -1,0 +1,59 @@
+Numpy : package for data science 
+
+- alternative to python built in list , it is faster and memory efficiency
+- Numpy array is 𝐡𝐨𝐦𝐨𝐠𝐞𝐧𝐞𝐨𝐮𝐬 . each array must has the same dtype 
+
+
+
+import numpy as np 
+x = np.array([ list ])
+
+#check the datatype 
+
+x.dtype : correct syntax
+x.dtypes : error 
+
+- if we tried to create an array with mixed dtype , numpy will convert the dtype to 1 dtype
+
+
+𝐀 𝐧𝐮𝐦𝐩𝐲 𝐚𝐫𝐫𝐚𝐲 𝐜𝐨𝐧𝐭𝐚𝐢𝐧𝐬 𝐡𝐨𝐦𝐨𝐠𝐞𝐧𝐞𝐨𝐮𝐬 𝐝𝐚𝐭𝐚 𝐭𝐲𝐩𝐞𝐬 (𝐰𝐡𝐢𝐜𝐡 𝐫𝐞𝐝𝐮𝐜𝐞𝐬 𝐦𝐞𝐦𝐨𝐫𝐲 𝐜𝐨𝐧𝐬𝐮𝐦𝐩𝐭𝐢𝐨𝐧) 𝐚𝐧𝐝 𝐩𝐫𝐨𝐯𝐢𝐝𝐞𝐬 𝐭𝐡𝐞 𝐚𝐛𝐢𝐥𝐢𝐭𝐲 𝐭𝐨 𝐚𝐩𝐩𝐥𝐲 𝐨𝐩𝐞𝐫𝐚𝐭𝐢𝐨𝐧𝐬 𝐨𝐧 𝐚𝐥𝐥 𝐞𝐥𝐞𝐦𝐞𝐧𝐭𝐬 𝐭𝐡𝐫𝐨𝐮𝐠𝐡 𝐛𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭𝐢𝐧𝐠.
+
+
+1) 𝐡𝐨𝐦𝐨𝐠𝐞𝐧𝐞𝐢𝐭𝐲 : allow numpy to be faster and more efficient than python list , require all dtype to be the same t reduce the time needed to check the type within any operations 
+
+2) 𝐍𝐮𝐦𝐩𝐲 𝐚𝐫𝐫𝐚𝐲 𝐛𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭𝐢𝐧𝐠 : perform operations on each item in the array " vectorize operations "
+- it perform all operations on all elements of an object at once 
+
+𝐍𝐮𝐦𝐏𝐲'𝐬 𝐛𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭𝐢𝐧𝐠 𝐜𝐨𝐧𝐜𝐞𝐩𝐭. 𝐑𝐞𝐦𝐞𝐦𝐛𝐞𝐫, 𝐛𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭𝐢𝐧𝐠 𝐫𝐞𝐟𝐞𝐫𝐬 𝐭𝐨 𝐚 𝐧𝐮𝐦𝐩𝐲 𝐚𝐫𝐫𝐚𝐲'𝐬 𝐚𝐛𝐢𝐥𝐢𝐭𝐲 𝐭𝐨 𝐯𝐞𝐜𝐭𝐨𝐫𝐢𝐳𝐞 𝐨𝐩𝐞𝐫𝐚𝐭𝐢𝐨𝐧𝐬, 𝐬𝐨 𝐭𝐡𝐞𝐲 𝐚𝐫𝐞 𝐩𝐞𝐫𝐟𝐨𝐫𝐦𝐞𝐝 𝐨𝐧 𝐚𝐥𝐥 𝐞𝐥𝐞𝐦𝐞𝐧𝐭𝐬 𝐨𝐟 𝐚𝐧 𝐨𝐛𝐣𝐞𝐜𝐭 𝐚𝐭 𝐨𝐧𝐜𝐞.
+
+x = np.array([ 2 , 4 , 8 , 8]) 
+
+x * 2 >> ([4 , 8 , 16 , 16]) 
+
+3) 𝐢𝐧𝐝𝐞𝐱𝐢𝐧𝐠 : faster runtime 
+- in 1D arry both list and numpy has the same adv 
+- but in 2D arr , numpy array provide better indexing 
+
+numpy : arr[ row_idx, column_idx ] 
+list : arr[ row_idx ] [ column_idx ] 
+
+4) 𝐛𝐨𝐨𝐥𝐞𝐧 𝐢𝐧𝐝𝐞𝐱𝐢𝐧𝐠
+
+arr < logical condition > : arr > 0 : this will return array of true or false 
+- to return the values arr[ arr condition ] 
+
+
+# Print second row of nums
+print(nums[1,:])
+
+# Print all elements of nums that are greater than six
+print(nums[nums > 6])
+
+# Double every element of nums
+nums_dbl = nums * 2
+print(nums_dbl)
+
+# Replace the third column of nums
+nums[:,2] = nums[:,2] + 1
+print(nums)
+ 
