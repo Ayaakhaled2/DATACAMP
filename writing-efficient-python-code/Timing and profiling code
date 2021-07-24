@@ -1,0 +1,91 @@
+𝐄𝐱𝐚𝐦𝐢𝐧𝐢𝐧𝐠 𝐫𝐮𝐧𝐭𝐢𝐦𝐞
+------------------
+- comparing run time between two line of code that perform the same thing allow us to pick the code with the optimal performance 
+𝐅𝐚𝐬𝐭𝐞𝐬𝐭 𝐜𝐨𝐝𝐞 == 𝐦𝐨𝐫𝐞 𝐞𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐭
+
+
+(%timeit + code )
+
+>> 102 ms ± 7.48 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+
+- timeit return statistics about the execution time 
+- timeit : runs through the provided code multiple times to estimate the code's execution time 
+- num or runs represents how many iterations you would like to use to estimate the runtime 
+- num of codes : represents how many times you would like the code to be executed per run 
+- you can sepcify the num of runs using flag -r , and num of loops using -n 
+
+%timeit -r2 -n10 num = np.random.int(50000) 
+ - %runit : can run on single or multiple lines of code 
+ 
+ 
+ #Time it with single line of code  :       %timeit + code 
+ #timeit with multiple code :             use %%timeit 
+ %%timeit 
+ x = --- 
+ y = ---- 
+ 
+ #save the output of runtime using o flag 
+
+times = %timeit -o x = np.random.rand(100)
+
+- when you save the time for each run this allow you to 
+1) see the time of each run 
+times.timings
+
+2) the best runtime 
+
+times.best
+
+3) worest time for all run 
+
+times.worst
+
+
+# you can use the timeit to compare the run time of creating python data structure using 𝐟𝐨𝐫𝐦𝐚𝐥 𝐧𝐚𝐦𝐞 or 𝐥𝐢𝐭𝐞𝐫𝐧𝐚𝐥 𝐬𝐲𝐧𝐭𝐚𝐱
+𝐟𝐨𝐫𝐦𝐚𝐥 𝐧𝐚𝐦𝐞 :
+alist = list( ) 
+asict = dict( ) 
+atup = tuple( ) 
+
+𝐥𝐢𝐭𝐞𝐫𝐧𝐚𝐥 𝐬𝐲𝐧𝐭𝐚𝐱:
+
+alist = [] 
+adict = {} 
+atup = ()
+
+
+t1 = %timeit -o alist = [ input ] 
+t2 = %timeit -o alist = list( input ) 
+
+
+#literal sytax is faster 
+
+
+
+
+Using %timeit: formal name or literal syntax
+Python allows you to create data structures using either a formal name or a literal syntax. In this exercise, 
+you'll explore how using a literal syntax for creating a data structure can speed up runtimes.
+
+data structure	formal name	literal syntax
+list	list()	[]
+dictionary	dict()	{}
+tuple	tuple()	()
+
+
+ Using Python's literal syntax to define a data structure can speed up your runtime.
+ Consider using the literal syntaxes (like [] instead of list(), {} instead of dict(), or () instead of tuple()), where applicable, to gain some speed.
+ 
+ 
+ 
+ ---------------------------------------------------------------------------------------------------------------------------------------
+ 
+ 𝐜𝐨𝐝𝐞 𝐩𝐫𝐨𝐟𝐢𝐥𝐢𝐧𝐠 : allow you to analyze the code more efficiently 
+ it is a technique to describe how long and how often varous parts of the program are executed 
+ 
+ pip install line_profiler
+ %load_ext line_profiler
+ 
+ %lprun -f function_name function_call(arguments) 
+ 
+ -f : flag used to indicate that we want to calculate the execution time of a func 
