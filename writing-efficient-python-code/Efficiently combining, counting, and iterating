@@ -1,0 +1,76 @@
+Python comes with a number of efficient built in modules : 
+- the collection modules (𝐬𝐩𝐞𝐜𝐢𝐚𝐥𝐢𝐳𝐞𝐝 𝐜𝐨𝐧𝐭𝐚𝐢𝐧𝐞𝐫 𝐝𝐚𝐭𝐚𝐭𝐲𝐩𝐞𝐬) contains specilized datatypes that can be used as alternative to standard ( dict , set , list , tuple 
+1) 𝐬𝐩𝐞𝐜𝐢𝐚𝐥𝐢𝐳𝐞𝐝 𝐜𝐨𝐧𝐭𝐚𝐢𝐧𝐞𝐫 𝐝𝐚𝐭𝐚𝐭𝐲𝐩𝐞𝐬
+- 𝐧𝐚𝐦𝐞𝐝𝐭𝐮𝐩𝐥𝐞
+- 𝐝𝐞𝐪𝐮𝐞 
+- 𝐜𝐨𝐮𝐧𝐭𝐞𝐫
+- 𝐎𝐫𝐝𝐞𝐫𝐞𝐝𝐃𝐢𝐜𝐭
+- 𝐝𝐞𝐟𝐚𝐮𝐥𝐭𝐝𝐢𝐜𝐭
+
+
+1) counter 
+
+#1) counter
+
+from collections import counter 
+type_counts = counter( alist )
+
+#counter returns a counter dictionary of key value pairs ordered from highest to lowest count 
+
+- if comparing runtime we can find that couter takes the halftime than standard dictionary approach 
+
+
+2) iter tools : contains functional tools that for working with iterators 
+
+# 𝐂𝐨𝐦𝐛𝐢𝐧𝐞 𝐟𝐢𝐯𝐞 𝐢𝐭𝐞𝐦𝐬 𝐟𝐫𝐨𝐦 𝐧𝐚𝐦𝐞𝐬 𝐚𝐧𝐝 𝐭𝐡𝐫𝐞𝐞 𝐢𝐭𝐞𝐦𝐬 𝐟𝐫𝐨𝐦 𝐩𝐫𝐢𝐦𝐚𝐫𝐲_𝐭𝐲𝐩𝐞𝐬
+𝐝𝐢𝐟𝐟𝐞𝐫𝐢𝐧𝐠_𝐥𝐞𝐧𝐠𝐭𝐡𝐬 = [*𝐳𝐢𝐩(𝐧𝐚𝐦𝐞𝐬, 𝐩𝐫𝐢𝐦𝐚𝐫𝐲_𝐭𝐲𝐩𝐞𝐬[:𝟑])]
+
+𝐩𝐫𝐢𝐧𝐭(*𝐝𝐢𝐟𝐟𝐞𝐫𝐢𝐧𝐠_𝐥𝐞𝐧𝐠𝐭𝐡𝐬, 𝐬𝐞𝐩='\𝐧')
+
+
+"using zip() to combine multiple objects together. This is a nice function that allows you to easily combine two or more objects.
+
+Did you notice that if you provide zip() with objects of differing lengths, it will only combine until the smallest lengthed object is exhausted
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+𝐒𝐄𝐓 
+
+sometimes we would like to compare two objects to observe the similarities between thier contents 
+
+𝐒𝐄𝐓 : is a branch of mathmatics 
+
+𝐒𝐄𝐓 methods : 
+1) 𝐢𝐧𝐭𝐞𝐫𝐬𝐞𝐜𝐭𝐢𝐨𝐧 : all elements that in bith sets 
+2) 𝐝𝐢𝐟𝐟𝐞𝐫𝐞𝐧𝐜𝐞  : all elements in one but not in the other 
+3) 𝐬𝐲𝐦𝐦𝐞𝐭𝐫𝐢𝐜_𝐝𝐢𝐟𝐟𝐞𝐫𝐞𝐧𝐜𝐞 : all elements in one set only 
+4)  𝐮𝐧𝐢𝐨𝐧 : all elements that are in either set 
+
+
+Membership testing 
+Set : check the exist of one element within it's memebers using 𝐈𝐧 𝐨𝐩𝐞𝐫𝐚𝐭𝐨𝐫
+
+
+1) convert each list to set 
+2) set_a.interesction(setb) : to return the values that exist in both sets 
+𝐮𝐬𝐢𝐧𝐠 𝐬𝐞𝐭 𝐢𝐬 𝐚 𝐦𝐮𝐜𝐡 𝐟𝐚𝐬𝐭𝐞𝐫 𝐚𝐩𝐩𝐫𝐨𝐚𝐜𝐡
+
+
+to return values that in set a but not in set b 
+
+seta.difference(setb) 
+
+- to return values that in set b but not in set a 
+seb.difference(seta)
+
+- to collect values that exist in one set but not both 
+
+seta.symmetric_difference(setb) : this will return values that exist only in a , and exist only in b , togetter that are in only one set (not both)
+
+
+- union : unique values ( return unique values , no duplication ) 
+
+
+𝗦𝗲𝘁 : 
+𝗦𝗲𝘁 𝗶𝘀 𝗮 𝗰𝗼𝗹𝗹𝗲𝗰𝘁𝗶𝗼𝗻 𝗼𝗳 𝗱𝗶𝘀𝘁𝗶𝗻𝗰𝘁 𝘃𝗮𝗹𝘂𝗲𝘀
+
+- we can use set to cllect items frm existing obj 
