@@ -89,3 +89,44 @@ tuple	tuple()	()
  %lprun -f function_name function_call(arguments) 
  
  -f : flag used to indicate that we want to calculate the execution time of a func 
+-------------------------------------------------------------------------------------------------------------------------------
+memory consumption
+
+- import sys : this module contains system specific functions 
+
+
+sys.getsizeof( obj ) : this return the size of obj 
+- this nly give you the size of individula obkect 
+
+
+Code profiling : to analyze the memeory allocations for each line of code 
+
+
+pip install memory_profiler 
+%load_ext memory_profiler 
+%mprun -f fun_name func_call(args)
+
+- functions must be defined in a file and imported 
+%mp can be run on functions that defined in physical files not ipython session 
+
+- the result will be in Mib : we can say it is similar to mega bytes 
+- small amount of data may result in 0.0 mib ( mib : mebi bytes ) 
+
+
+Notes :
+
+line : indicate the line num of code 
+mem usage : memry used after the exection of this line of code 
+increment : shows the difference in memory between current line with respect to previous one 
+and this show us the impact of the current line on the total memory usage 
+line content : refers to source code that 'd been profiled 
+
+%mprun return the result by querying the operation system and so that he output may differ from the amount of memeory that's actually used by python interpreter 
+
+
+-f : flag indicate that we are calculate the memeory size of the function 
+
+
+Example with numpy : By implementing an array approach, you were able to shave off a few MiBs. 
+Although this isn't a colossal gain, it still decreases your code's overhead. 
+If your input data grows over time, these small improvements could add up to some major efficiency gains.
