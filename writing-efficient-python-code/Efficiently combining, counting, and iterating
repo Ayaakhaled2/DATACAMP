@@ -74,3 +74,4 @@ seta.symmetric_difference(setb) : this will return values that exist only in a ,
 𝗦𝗲𝘁 𝗶𝘀 𝗮 𝗰𝗼𝗹𝗹𝗲𝗰𝘁𝗶𝗼𝗻 𝗼𝗳 𝗱𝗶𝘀𝘁𝗶𝗻𝗰𝘁 𝘃𝗮𝗹𝘂𝗲𝘀
 
 - we can use set to cllect items frm existing obj 
+- it has kesss runtime 
