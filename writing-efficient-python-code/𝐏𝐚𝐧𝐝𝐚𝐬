@@ -12,3 +12,68 @@ If using i,row, you can access things from the row using square brackets (i.e., 
 If using row_tuple, you would have to specify which element of the tuple you'd like to access before grabbing the team name (i.e., row_tuple[1]['Team']).
 
 With either approach, using .iterrows() will still be substantially faster than using .iloc
+
+
+
+for indx , row in df.iterrows():
+   print(index , row ) 
+   
+ - this will return a tuple : index , row 
+ 
+ 
+ 
+ 𝐢𝐭𝐞𝐫 𝐭𝐮𝐩𝐥𝐞𝐬:
+ df.itertuples() : is an efficient way to iterate over the dataframe 
+ - it return an obj called : namedtuple , one of the collections package , it is similar to tuple but have field accessable usig attribute lookup ( . ) 
+ Remember, .itertuples() returns each DataFrame row as a special data type called a namedtuple.
+ 
+ 𝐓𝐡𝐞 𝐦𝐚𝐢𝐧 𝐝𝐢𝐟𝐟𝐞𝐫𝐞𝐧𝐜𝐞 𝐛𝐞𝐭𝐰𝐞𝐞𝐧 𝐢𝐭𝐞𝐫𝐫𝐨𝐰𝐬 𝐚𝐧𝐝 𝐢𝐭𝐞𝐫𝐭𝐮𝐩𝐥𝐞𝐬
+) to access a column in 𝐢𝐭𝐞𝐫𝐫𝐨𝐰𝐬 you can use [] 
+
+for row_tuples in df.iterrows():
+    print( row_tuples[1]) #to return the columns 
+- but 𝐢𝐭𝐞𝐫𝐭𝐮𝐩𝐥𝐞𝐬 : namedtuple dosenot support the [] 
+for row_tuples in df.itertuples():
+    print( row_tuples.attribute )
+    𝐲𝐨𝐮 𝐦𝐮𝐬𝐭 𝐮𝐬𝐞 𝐝𝐨𝐭 𝐭𝐨 𝐫𝐞𝐟𝐞𝐫e𝐧𝐜𝐞 𝐭𝐡𝐞 𝐚𝐭𝐭𝐫𝐢𝐛𝐮𝐭𝐞
+
+
+ Remember, you need to use the dot syntax for referencing an attribute in a namedtuple.
+ 
+ 
+ 
+ 
+ 
+ pandas alternative to looping:
+ to avoid the loops in pandas : use apply function , it acts as Map function in python 
+ - it used to apply the function the entire dataframe 
+- 𝐲𝐨𝐮 𝐦𝐮𝐬𝐭 𝐬𝐩𝐞𝐜𝐢𝐟𝐲 𝐭𝐡𝐞 𝐚𝐱𝐢𝐬 
+   𝟎 : 𝐜𝐨𝐥𝐮𝐦𝐧𝐬 
+   𝟏 : 𝐫𝐨𝐰𝐬
+
+
+df,apply(lambda / function , axis = 0 , 1)
+
+
+Apply sum() to each row of rays_df, only looking at the 'RS' and 'RA' columns, and specify the correct axis.
+total_runs_scored = rays_df[['RS', 'RA']].apply(sum, axis=1)
+
+# Convert numeric playoffs to text by applying text_playoffs()
+textual_playoffs = rays_df.apply(lambda row: text_playoffs()(row[''Playoffs'']), axis=1)
+print(textual_playoffs)
+
+.apply() method let's you apply functions to all rows or columns of a DataFrame by specifying an axis.
+
+
+
+Pandas : 
+- pandas perform vectorized ( broadcasting ) 
+operations like numpy , the operations executed on the entire dataset at once 
+
+
+df['column'].values : return the rows of the columns as np array 
+
+
+you can use the np array to perform the calculations on the df columns and it will be better in performnace nad runtime 
+
+df['c1'].values - df['c2'].values 
