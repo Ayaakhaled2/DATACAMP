@@ -1,0 +1,34 @@
+Looping in python 
+
+
+- looping in python has many pattern : 
+
+1) for loop :
+- Iterate over a seq piece by piece 
+
+2) while loop : 
+- Repeat the loop as long as the condition is met 
+
+3) nested loop : 
+- use one loop inside other loop 
+
+
+- most of loops evaluated by piece by piece manner abd this is an efficient solution 
+
+
+Eliminating loops : it has less runtime 
+
+1) use list comprehension 
+2) use [ * map( func , seq ) ] 
+3) 
+from itertools import combinations 
+var = [* combinations(dtype , n )]
+4) use numpy 
+
+
+When using the .sum() and .mean() methods, providing axis=0 will return a calculation for each column of the stats array. Providing axis=1 will return a calculation for each row of the stats array.
+
+- Writing better loops 
+1) understand what is being done with each loop
+2) move one time calculations outside the loop 
+3) anything can be made once should moved outside the loop 
