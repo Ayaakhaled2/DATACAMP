@@ -1,0 +1,104 @@
+Datasets rarely come to you exactly as you need them for data analysis. As a result,
+it is important to understand how to transform data using Power Query before you can start creating reports and dashboards.
+
+𝐃𝐚𝐭𝐚 𝐌𝐨𝐝𝐞𝐥𝐢𝐧𝐠 𝐢𝐧 𝐏𝐨𝐰𝐞𝐫 𝐁𝐈
+
+Data Model is a conceptual view of data elements " Digram " 
+it includes "Tables , columns , Relationships , Meta data " 
+
+
+𝐖𝐡𝐲 𝐰𝐞 𝐦𝐚𝐤𝐞 𝐝𝐚𝐭𝐚 𝐦𝐨𝐝𝐞𝐥𝐢𝐧𝐠?
+- because the dat not often clean , so we need to make some cleanup and often substantial alternations to data to find the right insights 
+
+Cleaning data includes 
+- joins , string manipulations , pivot tables .. etc 
+- this free up some space and improve the speed 
+ 
+ 𝐃𝐚𝐭𝐚 𝐪𝐮𝐞𝐫𝐲 𝐢𝐧 𝐩𝐨𝐰𝐞𝐫𝐛𝐢 𝐦𝐚𝐢𝐧𝐥𝐲 𝐡𝐚𝐧𝐝𝐥𝐞𝐝 𝐛𝐲 𝐩𝐨𝐰𝐞𝐫 𝐪𝐮𝐞𝐫𝐲: the query editor for powerbi 
+ 1) Manage the query that drives the dashboard 
+ 2) Assist in data modeling 
+ 
+- rounding num is power query not often used because we usually round after calculations 
+- formating in (powerbi itself) effect the appearance of data but it doesnot effect the stored data 
+- we usually perform rounding in powerbi than powerquery 
+
+
+
+𝐏𝐨𝐰𝐞𝐫 𝐐𝐮𝐞𝐫𝐲 𝐢𝐧𝐜𝐥𝐮𝐝𝐞𝐬 𝐚 𝐜𝐨𝐧𝐬𝐢𝐝𝐞𝐫𝐚𝐛𝐥𝐞 𝐧𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐛𝐮𝐢𝐥𝐭-𝐢𝐧 𝐨𝐩𝐞𝐫𝐚𝐭𝐢𝐨𝐧𝐬 𝐭𝐨 𝐦𝐨𝐝𝐢𝐟𝐲 𝐜𝐨𝐥𝐮𝐦𝐧𝐬, 
+𝐚𝐧𝐝 𝐢𝐭 𝐬𝐞𝐫𝐯𝐞𝐬 𝐯𝐞𝐫𝐲 𝐰𝐞𝐥𝐥 𝐚𝐬 𝐚𝐧 "𝟖𝟎%" 𝐬𝐨𝐥𝐮𝐭𝐢𝐨𝐧. 𝐓𝐡𝐚𝐭 𝐬𝐚𝐢𝐝, 𝐭𝐡𝐞𝐫𝐞 𝐚𝐫𝐞 𝐜𝐨𝐥𝐮𝐦𝐧 𝐩𝐫𝐨𝐩𝐞𝐫𝐭𝐢𝐞𝐬 
+𝐰𝐡𝐢𝐜𝐡 𝐲𝐨𝐮 𝐜𝐚𝐧 𝐞𝐝𝐢𝐭 𝐨𝐧𝐥𝐲 𝐨𝐮𝐭𝐬𝐢𝐝𝐞 𝐨𝐟 𝐏𝐨𝐰𝐞𝐫 𝐐𝐮𝐞𝐫𝐲, 𝐚𝐧𝐝 𝐢𝐭 𝐢𝐬 𝐢𝐦𝐩𝐨𝐫𝐭𝐚𝐧𝐭 𝐭𝐨 𝐤𝐧𝐨𝐰 𝐰𝐡𝐞𝐫𝐞 𝐲𝐨𝐮 𝐜𝐚𝐧 𝐟𝐢𝐧𝐝 𝐭𝐡𝐞𝐬𝐞 𝐞𝐥𝐞𝐦𝐞𝐧𝐭𝐬 𝐢𝐧 𝐭𝐡𝐞 𝐏𝐨𝐰𝐞𝐫 𝐁𝐈 𝐮𝐬𝐞𝐫 𝐢𝐧𝐭𝐞𝐫𝐟𝐚𝐜𝐞.
+
+
+
+You can change the data type in Power Query and Power BI, but it is best practice to do this in Power Query, so that your data is properly loaded in Power BI. 
+actual table (un)pivoting happens in Power Query
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+𝐃𝐞𝐚𝐢𝐧𝐥𝐠 𝐰𝐢𝐭𝐡 𝐭𝐨𝐩 𝐫𝐨𝐰𝐬:
+
+- Select top rows that you dont want
+- remove row , select num of rows t remove 
+- chang the header : use first row as a header 
+- the datatypes changed automatically according to the first 100 rows 
+
+
+𝐀𝐝𝐝 𝐩𝐫𝐞𝐟𝐢𝐱
+this can only be done in the transform menu 
+
+format >> add prefix >> " text " 
+
+Doing prefix allows yu to put in some hard coded value before each value in the column 
+
+𝐀 𝐬𝐮𝐟𝐟𝐢𝐱 𝐢𝐬 𝐚 𝐰𝐨𝐫𝐝 𝐩𝐚𝐫𝐭 𝐚𝐝𝐝𝐞𝐝 𝐭𝐨 𝐭𝐡𝐞 𝐞𝐧𝐝 𝐨𝐟 𝐚 𝐰𝐨𝐫𝐝 (𝐟𝐨𝐫 𝐞𝐱𝐚𝐦𝐩𝐥𝐞, -𝐟𝐮𝐥).
+𝐈𝐟 𝐲𝐨𝐮 𝐚𝐝𝐝 𝐭𝐡𝐞 𝐬𝐮𝐟𝐟𝐢𝐱 -𝐟𝐮𝐥 𝐭𝐨 𝐭𝐡𝐞 𝐛𝐚𝐬𝐞 𝐰𝐨𝐫𝐝, 𝐡𝐞𝐥𝐩, 𝐭𝐡𝐞 𝐰𝐨𝐫𝐝 𝐢𝐬 𝐡𝐞𝐥𝐩𝐟𝐮𝐥. 
+𝐀 𝐩𝐫𝐞𝐟𝐢𝐱 𝐢𝐬 𝐚 𝐰𝐨𝐫𝐝 𝐩𝐚𝐫𝐭 𝐚𝐝𝐝𝐞𝐝 𝐭𝐨 𝐭𝐡𝐞 𝐛𝐞𝐠𝐢𝐧𝐧𝐢𝐧𝐠 𝐨𝐟 𝐚 𝐰𝐨𝐫𝐝 𝐨𝐫 𝐛𝐚𝐬𝐞 𝐰𝐨𝐫𝐝 (𝐟𝐨𝐫 𝐞𝐱𝐚𝐦𝐩𝐥𝐞, 𝐮𝐧-).
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+𝐃𝐚𝐭𝐚 𝐯𝐢𝐞𝐰 (2nd section in powerbi interface) 𝐢𝐧 𝐩𝐨𝐰𝐞𝐫 𝐪𝐮𝐞𝐫𝐲
+ - you have different options that only alter the visual repreentation of the data 
+ 
+ - changing format 
+ - currency 
+ - rounding 
+ - data category 
+ 
+ Data category option : it is important to let powerbi know which data category this columhs values belong to to make it eaiser to make viz 
+ 
+Hide : you can use hide to hide that that cant be used with end user 
+
+
+𝐞𝐝𝐢𝐭 𝐪𝐮𝐞𝐫𝐲
+-right click on the dataset , choose edit query 
+
+
+changing the dtype in data view : using format 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+𝐃𝐚𝐭𝐚base 𝐍𝐨𝐫𝐦𝐚𝐥𝐢𝐳𝐚𝐭𝐢𝐨𝐧𝐬
+
+𝐃𝐚𝐭𝐚base 𝐍𝐨𝐫𝐦𝐚𝐥𝐢𝐳𝐚𝐭𝐢𝐨𝐧𝐬: is a set of rules and processess for data modeling 
+
+𝐆𝐨𝐚𝐥𝐬 𝐨𝐟 𝐝𝐚𝐭𝐚𝐛𝐚𝐬𝐞 𝐧𝐨𝐫𝐦𝐚𝐥𝐢𝐳𝐚𝐭𝐢𝐨𝐧𝐬 
+𝟏) 𝐑𝐞𝐦𝐨𝐯𝐞 𝐫𝐞𝐝𝐮𝐧𝐝𝐚𝐧𝐭 𝐝𝐚𝐭𝐚 
+𝐰𝐡𝐞𝐧 𝐭𝐡𝐞 𝐬𝐚𝐦𝐞 𝐢𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 𝐬𝐭𝐨𝐫𝐞𝐝 𝐢𝐧 𝐦𝐮𝐥𝐭𝐢𝐩𝐥𝐞 𝐩𝐥𝐚𝐜𝐞𝐬 
+ - 𝐤𝐞𝐞𝐩 𝐝𝐚𝐭𝐚 𝐜𝐨𝐧𝐬𝐢𝐬𝐭𝐞𝐧𝐜𝐲 
+- 𝐟𝐫𝐞𝐞 𝐬𝐨𝐦𝐞 𝐦𝐞𝐦𝐨𝐫𝐲 𝐬𝐩𝐚𝐜𝐞 
+
+𝟐) 𝐀𝐜𝐡𝐢𝐞𝐯𝐞 𝐚 𝐝𝐞𝐬𝐢𝐠𝐧 𝐰𝐡𝐢𝐜𝐡 𝐚 𝐠𝐨𝐨𝐝 𝐫𝐞𝐩𝐫𝐞𝐬𝐞𝐧𝐭𝐚𝐭𝐢𝐨𝐧 𝐨𝐟 𝐫𝐞𝐚𝐥 𝐰𝐨𝐫𝐥𝐝 𝐚𝐧𝐝 𝐡𝐨𝐰 𝐞𝐧𝐭𝐢𝐭𝐞𝐬 𝐢𝐧𝐭𝐞𝐫-𝐫𝐞𝐥𝐚𝐭𝐞𝐬
+
+
+Defining a relationship between tables is done in the Model view of Power BI
+
+C𝐨𝐦𝐛𝐢𝐧𝐞 𝐭𝐰𝐨 𝐭𝐚𝐛𝐥𝐞𝐬 
+- Select get data and upload 2 tables 
+- append query as new  
+
+
+
+Extract : 
+from transform >> Extract 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+𝐀𝐩𝐩𝐞𝐧𝐝𝐢𝐧𝐠 𝐟𝐢𝐥𝐞𝐬
+𝐒𝐨𝐦𝐞𝐭𝐢𝐦𝐞𝐬, 𝐲𝐨𝐮 𝐦𝐚𝐲 𝐫𝐞𝐜𝐞𝐢𝐯𝐞 𝐝𝐚𝐭𝐚 𝐬𝐞𝐭𝐬 𝐬𝐩𝐥𝐢𝐭 𝐢𝐧𝐭𝐨 𝐬𝐞𝐯𝐞𝐫𝐚𝐥 𝐬𝐞𝐩𝐚𝐫𝐚𝐭𝐞 𝐟𝐢𝐥𝐞𝐬.
+𝐀 𝐜𝐨𝐦𝐦𝐨𝐧 𝐞𝐱𝐚𝐦𝐩𝐥𝐞 𝐢𝐬 𝐰𝐡𝐞𝐧 𝐭𝐡𝐞 𝐝𝐚𝐭𝐚 𝐢𝐬 𝐬𝐩𝐥𝐢𝐭 𝐛𝐲 𝐲𝐞𝐚𝐫 𝐭𝐨 𝐫𝐞𝐝𝐮𝐜𝐞 𝐛𝐚𝐧𝐝𝐰𝐢𝐝𝐭𝐡 𝐜𝐨𝐬𝐭𝐬 𝐨𝐫 𝐤𝐞𝐞𝐩 𝐟𝐢𝐥𝐞 𝐬𝐢𝐳𝐞𝐬 𝐬𝐦𝐚𝐥𝐥𝐞𝐫. 
+𝐁𝐞𝐢𝐧𝐠 𝐚𝐛𝐥𝐞 𝐭𝐨 𝐜𝐨𝐦𝐛𝐢𝐧𝐞 𝐭𝐡𝐞𝐬𝐞 𝐝𝐚𝐭𝐚𝐬𝐞𝐭𝐬 𝐭𝐨𝐠𝐞𝐭𝐡𝐞𝐫 𝐚𝐥𝐥𝐨𝐰𝐬 𝐲𝐨𝐮 𝐭𝐨 𝐯𝐢𝐬𝐮𝐚𝐥𝐢𝐳𝐞 𝐝𝐚𝐭𝐚 𝐚𝐜𝐫𝐨𝐬𝐬 𝐭𝐡𝐨𝐬𝐞 𝐝𝐢𝐟𝐟𝐞𝐫𝐞𝐧𝐭 𝐝𝐚𝐭𝐚𝐬𝐞𝐭𝐬 𝐚𝐧𝐝 𝐩𝐫𝐞𝐬𝐞𝐧𝐭 𝐚 𝐬𝐢𝐧𝐠𝐥𝐞, 𝐜𝐨𝐧𝐬𝐢𝐬𝐭𝐞𝐧𝐭 𝐭𝐚𝐛𝐥𝐞 𝐟𝐨𝐫 𝐛𝐮𝐬𝐢𝐧𝐞𝐬𝐬 𝐮𝐬𝐞𝐫𝐬.
