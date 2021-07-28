@@ -1,0 +1,64 @@
+Data modeling is a conceptual represesntation of the data 
+
+Data modeling techniques are many : the most common , kimboll : dimensional modeling 
+
+Dimension modeling consists of : Facts , dimensions 
+
+
+Fact : matrix 
+domension : context 
+
+
+
+Schema : Start Schema 
+- the star schema name comes from how the facts and dimesnions are connected 
+
+PowerBi is faster and easier to use dimesnional modeling " Star Schema " 
+
+
+Fact : consists of two type of columns , the fact , keys 
+facts : the metrix , measure of your buisness process 
+keys : How to establish relationships between facts and the dimension table 
+
+
+Facts tell you How often - How much 
+
+
+dimensions 
+- give you the rest of the details 
+- contains static and slowely changing data 
+- in the star schema dimensions not lined to other dimensions 
+
+
+𝐅𝐚𝐜𝐭𝐬 𝐯𝐬. 𝐝𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧𝐬
+𝐓𝐡𝐞 𝐭𝐰𝐨 𝐦𝐚𝐢𝐧 𝐛𝐮𝐢𝐥𝐝𝐢𝐧𝐠 𝐛𝐥𝐨𝐜𝐤𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐝𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧𝐚𝐥 𝐦𝐨𝐝𝐞𝐥 𝐚𝐫𝐞 𝐟𝐚𝐜𝐭𝐬 𝐚𝐧𝐝 𝐝𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧𝐬. 𝐈𝐭'𝐬 𝐢𝐦𝐩𝐨𝐫𝐭𝐚𝐧𝐭 𝐭𝐨 𝐛𝐞 𝐚𝐛𝐥𝐞 𝐭𝐨 𝐝𝐢𝐬𝐭𝐢𝐧𝐠𝐮𝐢𝐬𝐡 𝐛𝐞𝐭𝐰𝐞𝐞𝐧 𝐛𝐨𝐭𝐡.
+------------------------------------------------------------------------------------------------------------------------------------------
+
+kimboll : dimensional model 
+
+concepts : Facts and dimesnions 
+
+fact : matrix of the business process 
+dimension : matrix of the business model 
+
+
+PowerBi is optimized to use star schema over any other schema 
+powerbi is faster and eaiser approach with dimension schema 
+
+
+Fact table made up of " Facts < measueres > , dimensions 
+
+facts are the measuere of matrix from your business process 
+- sales 
+- employee count 
+- num of website visits 
+those kind of values that generally dates and numbers can aggregate in some way
+Keys is how to establish a relationships between facts tables and dimensions
+tables 
+- in STAR SCHEMA , dimensions not cnnected to the other dimensions tables 
+
+
+
+Datasets will frequently come in a "wide" format, containing both fact and dimensional data. 
+Breaking these files out into facts and dimensions will improve queries and can improve performance on larger datasets.
+
