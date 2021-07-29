@@ -1,0 +1,60 @@
+Star and snowflake schemas
+
+1) Star schema alllow one or more facts tables surrounding by the dimension table 
+
+2) snsow flake schema allow one or more fact taable except it allows relationships between dimensions 
+. A snowflake schema is essentially an extension of star schema where each dimension can be connected to one or more dimensions as well
+
+
+Starschema : 
+1) eaiser to use 
+2) easy for buisness users to understand 
+3) most bi tools optimized for starschema 
+4) sometimes we use snow flake schema in dwh because 
+- starschema has some duplicates and that effect the storage and performnce 
+- start schema nit ideal for frequently udated data especially with large dimensions 
+
+
+
+
+
+𝐏𝐞𝐫𝐟𝐨𝐫𝐦𝐚𝐧𝐜𝐞 𝐀𝐧𝐚𝐥𝐲𝐳𝐞𝐫
+1) powerbi has his built on performance analyzer 
+- when enabled performance analyzer it keeps track of at least threee key measures on each visuals 
+
+- Each visual has three components 
+ 1) How long did the dax query take 
+ 2) How long did the visual take to render 
+ 3) How did everything else takes : waiting time on other operations including waiting for cross filtering operations to complete 
+ 
+ 
+ 𝐏𝐞𝐫𝐟𝐨𝐦𝐧𝐚𝐜𝐞 𝐭𝐮𝐧𝐢𝐧𝐠
+1) DAX query slowness 
+1) Tune dax operations 
+2) Improve data loading and performance 
+
+
+𝐕𝐢𝐬𝐮𝐚𝐥 𝐝𝐢𝐬𝐩𝐥𝐚𝐲 𝐬𝐥𝐨𝐰𝐧𝐞𝐬𝐬
+1) use less complicated visuals 
+2) show less visuals on the screen 
+
+
+Note : dotted line in the relation ships mean it is not active , so you need to edit this 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+𝐏𝐞𝐫𝐟𝐨𝐫𝐦𝐚𝐧𝐜𝐞 𝐚𝐧𝐚𝐥𝐲𝐳𝐞𝐫
+
+View >> 𝐏𝐞𝐫𝐟𝐨𝐫𝐦𝐚𝐧𝐜𝐞 𝐚𝐧𝐚𝐥𝐲𝐳𝐞𝐫 >> start recording ?? refresh 
+
+time will be in mili second 
+
+
+
+Snowflake schemas
+While Power BI is optimized for star schemas, it needs to work in a variety of use cases. One alternative data modeling approach is to use snowflake schemas, where dimensions can be connected to other dimensions.
+
+A big difference between the two is how they handle hierarchical data. Star dimensions tend to have all levels of a hierarchy in the same table. With snowflake dimensions, hierarchy levels are broken out into multiple tables. 
+
+
+
+ With snowflake schemas, there will be less duplication which means updating records is more efficient. However, 
+ star schemas are easier for business users to understand and most BI tools optimize performance for this schema.
