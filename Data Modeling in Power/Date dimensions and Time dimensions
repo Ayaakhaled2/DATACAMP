@@ -1,0 +1,148 @@
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 𝐃𝐚𝐭𝐞 𝐝𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧𝐬 𝐚𝐧𝐝 𝐓𝐢𝐦𝐞 𝐝𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧𝐬
+
+𝐃𝐚𝐭𝐞 𝐝𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧𝐬 
+1)give built in calenders that minmize complex operations 
+
+time dimesnions : focus on the time of the day 
+
+
+𝐂𝐫𝐞𝐚𝐭𝐞 𝐚 𝐝𝐚𝐭𝐞 𝐝𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧 𝐮𝐬𝐢𝐧𝐠 𝐝𝐚𝐱 : calender function 
+calender function : create a series of dates 
+
+types of keys: 
+- natural key : existing columns 
+- surrogate key : index 
+- composite keys : combinations of two nature keys 
+
+
+𝐀 𝐫𝐞𝐥𝐚𝐭𝐢𝐨𝐧𝐬𝐡𝐢𝐩 𝐟𝐫𝐨𝐦 𝐚 𝐟𝐚𝐜𝐭 𝐭𝐨 𝐚 𝐝𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧 𝐢𝐬 𝐭𝐲𝐩𝐢𝐜𝐚𝐥𝐥𝐲 𝐰𝐡𝐢𝐜𝐡 𝐨𝐟 𝐭𝐡𝐞 𝐟𝐨𝐥𝐥𝐨𝐰𝐢𝐧𝐠?
+you want to define a relationship from many rows in a fact table to one row in a dimension table.
+
+
+Remarkable relationship modeling! A relationship from fact to dimension (many-to-one) or dimension to fact
+(one-to-many) is by far the most common relationship you can define between two tables.
+
+
+
+
+Complete the following DAX syntax to create the Year table, which should contain a single column Year, with years ranging from 1961 to today's year.
+
+____ = // name of the table
+DISTINCT ( // only keeps unique rows
+    SELECTCOLUMNS ( // returns a table and creates new column based on expression
+        ____ ( DATE ( ____ ), ____ ), // creates date range between 1961-01-01 and today
+        "____", YEAR([____]) // creates "Year" column, extracting the years only
+       
+    )
+)
+
+
+
+Hint
+When you select a function in DAX, a pop-up appears with the necessary arguments.
+The CALENDAR() function creates a range of dates.
+The [Date] field is automatically created when using the CALENDAR() function.
+The complete syntax should look like this:
+Year = 
+DISTINCT (
+    SELECTCOLUMNS (
+        CALENDAR ( DATE ( 1961, 1, 1), TODAY() ),
+        "Year", YEAR([Date])
+    )
+)
+--------------------------------------------------------------------------------------------------------
+𝐠𝐫𝐚𝐧𝐮𝐥𝐚𝐫𝐢𝐭𝐲 : 
+Refers to at which level the data is stored with respect to the dimensions 
+
+
+
+cross filtering : 
+when you select a data point that can filter other visuals 
+
+- the filter direction usaully goes from one to many , from dimensions t fact 
+
+
+there are two types of directions : 
+1) single directions : filter in one direction
+2) Bi direction : filter in both directions
+Although bi-directional filtering could come at a performance cost, 
+and is generally frowned upon in Power BI, there are specific circumstances in which it can make sense. 
+
+
+The most common scenario involves filtering slicers to exclude any dimensional values which do not have corresponding entries in the fact table.
+
+
+
+
+𝐑𝐨𝐥𝐞 𝐩𝐥𝐚𝐲𝐢𝐧𝐠 𝐝𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧𝐬:
+- table with multiple valid relationships between itself and another table 
+- implemented as a view of data dimensions 
+
+
+Role-playing dimensions are an important part of the Kimball dimensional model, 
+but implementing them in Power BI is not straightforward. Instead of copying tables several times,
+the appropriate technique is to use the USERELATIONSHIP() function in DAX to specify relationships on measures.
+
+
+𝐏𝐨𝐰𝐞𝐫𝐛𝐢 𝐝𝐨𝐞𝐬 𝐧𝐨𝐭 𝐚𝐥𝐥𝐨𝐰 𝐟𝐨𝐫 𝐦𝐮𝐥𝐭𝐢𝐩𝐥𝐞 𝐚𝐜𝐭𝐢𝐯𝐞 𝐫𝐞𝐥𝐚𝐭𝐢𝐨𝐧𝐬𝐡𝐢𝐩𝐬 𝐛𝐞𝐭𝐰𝐞𝐞𝐧 𝐭𝐚𝐛𝐥𝐞𝐬 
+𝐛𝐮𝐭 𝐲𝐨𝐮 𝐜𝐚𝐧 𝐮𝐬𝐞 𝐭𝐡𝐢𝐬 𝐢𝐧 𝐚𝐜𝐭𝐢𝐯𝐞 𝐫𝐞𝐥𝐚𝐭𝐢𝐨𝐧𝐬𝐡𝐢𝐩𝐬 
+𝐚𝐧𝐝 𝐭𝐞𝐥𝐥 𝐩𝐨𝐰𝐞𝐫𝐛𝐢 𝐭𝐨 𝐮𝐬𝐞 𝐢𝐭 𝐮𝐬𝐢𝐧𝐠 
+𝐔𝐒𝐄𝐑𝐄𝐋𝐀𝐓𝐈𝐎𝐍𝐒𝐇𝐈𝐏
+
+Related Number of employees = 
+CALCULATE(SUM('Summary Statistics Double NAICS'[Number of employees]), 
+USERELATIONSHIP('NAICS Code'[2017 NAICS Code], 'Summary Statistics Double NAICS'[NAICS Code Related]))
+
+ By using DAX, you can specify more than one relationship between two tables.
+-------------------------------------------------------------------------------------------------------------
+Notes 
+The Card visual displays a blank because there is no data associated to this state.
+-------------------------------------------------------------------------------------------------------------
+
+𝐈𝐝𝐞𝐧𝐭𝐢𝐟𝐲𝐢𝐧𝐠 𝐩𝐞𝐫𝐟𝐨𝐫𝐦𝐚𝐧𝐜𝐞 𝐩𝐫𝐨𝐛𝐥𝐞𝐦𝐬
+
+1) identify where the slowness exits 
+
+- when importing data 
+- querying data 
+- displaying visulas 
+- calculated and computed columns 
+
+
+Solve : 
+1) optimize data import 
+- remove un nessessary data columns / rows 
+- if you have data and you will not use it will better to remove it 
+- choose the correct datatype 
+
+
+
+There are two wqys to connect to data 
+1) import 
+2) direct query : that allow to connect to remote data source 
+
+
+
+𝐜𝐚𝐥𝐜𝐮𝐥𝐚𝐭𝐞𝐝 𝐜𝐨𝐥𝐮𝐦𝐧𝐬 , 𝐜𝐨𝐦𝐩𝐮𝐭𝐞𝐝 𝐜𝐨𝐥𝐮𝐦𝐧𝐬
+1) calculated columns : in DAX
+2) computed columns : powerquery (M)
+
+they can differ in performance 
+- computed columns faster 
+
+computed columns generated at import time , they get built single
+time 
+
+calculated columns generated per visual at runtime 
+
+
+
+Performance analyzer 
+view >> performance analyzer >> start recording 
+The number you can see in the Performance analyzer represents the time it takes to load the visual in milliseconds.
+The higher this number, the longer it takes to load.
+
+
+It's a lot faster to perform calculations on numeric data directly. Additionally, 
+it takes up less storage space. So make sure to set the appropriate data type for all columns in your dataset!
