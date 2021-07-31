@@ -1,0 +1,9 @@
+Pandas : 
+Pandas is python package for data manipulations and visualizations 
+
+Tabular data ( rectangular data ) is the most common form to store data 
+
+Row >> Observation
+Columns >> variable 
+
+Every value within the column has the same datatype but different columns has different datatypes 
