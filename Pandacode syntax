@@ -115,8 +115,151 @@ df['c'].value_counts( normalize = True ) #return proportional of total
 var_name = df['c'].value_counts(sort=True, normalize=True)
 
 
+---------------------------------------------------------
+Fill in missing values and sum values with pivot tables
+The .pivot_table() method has several useful arguments, including fill_value and margins.
+
+fill_value replaces missing values with a real value (known as imputation). What to replace missing values with is a topic big enough to have its own course (Dealing with Missing Data in Python), but the simplest thing to do is to substitute a dummy value.
+margins is a shortcut for when you pivoted by two variables, but also wanted to pivot by each of those variables separately: it gives the row and column totals of the pivot table contents.
 
 
 
 
 
+-------------------------------------------------------
+𝐬𝐞𝐭𝐭𝐢𝐧𝐠 𝐢𝐧𝐝𝐞𝐱
+df.set_index('column_name') : to make a column as index 
+
+
+𝐒𝐞𝐭𝐭𝐢𝐧𝐠 𝐚𝐧𝐝 𝐫𝐞𝐦𝐨𝐯𝐢𝐧𝐠 𝐢𝐧𝐝𝐞𝐱𝐞𝐬
+
+pandas allows you to designate columns as an index. This enables cleaner code when taking subsets (as well as providing more efficient lookup under some circumstances).
+
+
+The killer feature for indexes is .𝐥𝐨𝐜[]: a subsetting method that accepts index values. When you pass it a single argument, it will take a subset of rows.
+
+The code for subsetting using .loc[] can be easier to read than standard square bracket subsetting, which can make your code less burdensome to maintain.
+
+# Make a list of cities to subset on
+cities = ["Moscow", "Saint Petersburg"]
+
+# Subset temperatures using square brackets
+print(temperatures[temperatures["city"].isin(cities)])
+
+# Subset temperatures_ind using .loc[]
+print(temperatures_ind.loc[cities])
+
+Magnificent multi-level indexing! Multi-level indexes can make it easy to comprehend your dataset when one category is nested inside another category.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+TO slice the dataframe 
+1) first : need to sort it 
+
+df.set_index([list of columns]).sort_index()
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Slicing index values
+Slicing lets you select consecutive elements of an object using first:last syntax. DataFrames can be sliced by index values or by row/column number; we'll start with the first case. This involves slicing inside the .loc[] method.
+
+Compared to slicing lists, there are a few things to remember.
+
+You can only slice an index if the index is sorted (using .sort_index()).
+To slice at the outer level, first and last can be strings.
+To slice at inner levels, first and last should be tuples.
+If you pass a single slice to .loc[], it will slice the rows.
+
+
+Call .sort_index() without arguments.
+Slice with code in the form df.loc["a":"b"] twice.
+Then slice with code like df.loc[("a", "b"):("c", "d")].
+
+
+Slice rows with code like df.loc[("a", "b"):("c", "d")].
+Slice columns with code like df.loc[:, "e":"f"].
+Slice both ways with code like df.loc[("a", "b"):("c", "d"), "e":"f"]
+
+
+
+Slicing time series
+Slicing is particularly useful for time series since it's a common thing to want to filter for data within a date range.
+Add the date column to the index, then use .loc[] to perform the subsetting. The important thing to remember is to keep your dates in ISO 8601 format, 
+that is, "yyyy-mm-dd" for year-month-day, "yyyy-mm" for year-month, and "yyyy" for year.
+
+# Use Boolean conditions to subset temperatures for rows in 2010 and 2011
+temperatures_bool = temperatures[(temperatures["date"] >= "2010-01-01") & (temperatures["date"] <= "2011-12-31")]
+print(temperatures_bool)
+
+# Set date as the index and sort the index
+temperatures_ind = temperatures.set_index("date").sort_index()
+
+# Use .loc[] to subset temperatures_ind for rows in 2010 and 2011
+print(temperatures_ind.loc["2010":"2011"])
+
+# Use .loc[] to subset temperatures_ind for rows from Aug 2010 to Feb 2011
+print(temperatures_ind.loc["2010-08":"2011-02"])
+
+
+
+
+𝐚𝐜𝐜𝐞𝐬𝐬 𝐭𝐡𝐞 𝐜𝐨𝐦𝐩𝐨𝐧𝐞𝐧𝐭𝐬 𝐨𝐟 𝐚 𝐝𝐚𝐭𝐞 (𝐲𝐞𝐚𝐫, 𝐦𝐨𝐧𝐭𝐡 𝐚𝐧𝐝 𝐝𝐚𝐲) 𝐮𝐬𝐢𝐧𝐠 𝐜𝐨𝐝𝐞 𝐨𝐟 𝐭𝐡𝐞 𝐟𝐨𝐫𝐦
+𝐝𝐚𝐭𝐚𝐟𝐫𝐚𝐦𝐞["𝐜𝐨𝐥𝐮𝐦𝐧"].𝐝𝐭.𝐜𝐨𝐦𝐩𝐨𝐧𝐞𝐧𝐭. 
+𝐅𝐨𝐫 𝐞𝐱𝐚𝐦𝐩𝐥𝐞, 𝐭𝐡𝐞 𝐦𝐨𝐧𝐭𝐡 𝐜𝐨𝐦𝐩𝐨𝐧𝐞𝐧𝐭 𝐢𝐬
+> 𝐝𝐚𝐭𝐚𝐟𝐫𝐚𝐦𝐞["𝐜𝐨𝐥𝐮𝐦𝐧"].𝐝𝐭.𝐦𝐨𝐧𝐭𝐡, 
+𝐚𝐧𝐝 𝐭𝐡𝐞 𝐲𝐞𝐚𝐫 𝐜𝐨𝐦𝐩𝐨𝐧𝐞𝐧𝐭 𝐢𝐬 
+𝐝𝐚𝐭𝐚𝐟𝐫𝐚𝐦𝐞["𝐜𝐨𝐥𝐮𝐦𝐧"].𝐝𝐭.𝐲𝐞𝐚𝐫.
+
+
+
+Insightful use of .iloc[]! Use .iloc[] to specify a subset using the row or column numbers.
+
+Subsetting pivot tables
+A pivot table is just a DataFrame with sorted indexes, so the techniques you have learned already can be used to subset them. In particular, the .loc[] + slicing combination is often helpful.
+
+
+
+
+Calculating on a pivot table
+Pivot tables are filled with summary statistics, but they are only a first step to finding something insightful. 
+Often you'll need to perform further calculations on them. 
+
+
+
+
+
+
+Calculate the mean temperature for each year, assigning to mean_temp_by_year.
+Filter mean_temp_by_year for the year that had the highest mean temperature.
+Calculate the mean temperature for each city (across columns), assigning to mean_temp_by_city.
+Filter mean_temp_by_city for the city that had the lowest mean temperature.
+
+hints
+Call .mean() without arguments to get the mean of each column.
+Use Boolean filtering of the form mean_temp_by_year equal to mean_temp_by_year.max().
+Call .mean(), setting axis to "columns" to get the mean of each row.
+Use Boolean filtering of the form mean_temp_by_city equal to mean_temp_by_city.min().
+A common thing to do is to find the rows or columns where the highest or lowest value occurs.
+
+
+
+# Get the worldwide mean temp by year
+mean_temp_by_year = temp_by_country_city_vs_year.mean()
+
+# Filter for the year that had the highest mean temp
+print(mean_temp_by_year[mean_temp_by_year == mean_temp_by_year.max()])
+
+# Get the mean temp by city
+mean_temp_by_city = temp_by_country_city_vs_year.mean(axis="columns")
+
+# Filter for the city that had the lowest mean temp
+print(mean_temp_by_city[mean_temp_by_city == mean_temp_by_city.min()])
+-----------------------------------------------------------------------------------------
+𝐕𝐢𝐬𝐮𝐚𝐥𝐢𝐳𝐢𝐧𝐠 𝐲𝐨𝐮𝐫 𝐝𝐚𝐭𝐚
+
+import matplotlib..pyplot as plt 
+
+
+df['column'].hist()
+plt.show()
+
+for categorical columns 
+1) x - axis : values of categorical
+2) y-axis : counting of values for each category 
