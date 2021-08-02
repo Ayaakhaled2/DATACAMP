@@ -72,3 +72,51 @@ You can create new columns from scratch, but it is also common to derive them fr
 
 df['new_column'] = calculations to create the new columns 
 ---------------------------------------------------------------------------------
+𝐒𝐮𝐦𝐦𝐚𝐫𝐲 𝐬𝐭𝐚𝐭𝐢𝐬𝐭𝐢𝐜𝐬
+
+𝐒𝐮𝐦𝐦𝐚𝐫𝐲 𝐬𝐭𝐚𝐭𝐢𝐬𝐭𝐢𝐜𝐬: a num that summarize and tell you about your dataset 
+
+df['column'].mean()
+df['column'].median()
+df['column'].mode()
+df['column'].var()
+df['column'].std()
+df['column'].sum()
+df['column'].min()
+df['column'].max()
+
+𝐚𝐠𝐠 𝐟𝐮𝐧𝐜𝐭𝐢𝐨𝐧:
+df['column'].𝐚𝐠𝐠(function_name)
+
+𝐚𝐠𝐠 𝐟𝐮𝐧𝐜𝐭𝐢𝐨𝐧: allow to pass a fun / list of function to column / list of columns and it will apply the function on them 
+
+df[[list of columns]].agg([ list of fun])
+1) Min / max can be used with date column to return older / new 
+2)Taking the minimum and maximum of a column of dates is handy for figuring out what time period your data covers. 
+
+𝐜𝐮𝐦𝐮𝐥𝐚𝐭𝐢𝐯𝐞 𝐬𝐮𝐦: 
+
+df['column'].cumsum() 
+df['column'].cummin() 
+df['column'].cummax()
+df['column'].cumprod() 
+
+- each one of them return a record for each row 
+
+cumsum : first_value , v1 + v2 , v1 + v2 + v3 .... sum of all column 
+----------------------------------------------------------------------------------------------------------------------------------
+𝐬𝐮𝐦𝐦𝐚𝐫𝐢𝐳𝐞 𝐜𝐚𝐭𝐞𝐠𝐨𝐫𝐢𝐜𝐚𝐥 𝐝𝐚𝐭𝐚 𝐮𝐬𝐢𝐧𝐠 𝐜𝐨𝐮𝐧𝐭
+
+df.drop_duplicates(subset = 'column_name') >> drop duplcate values in this columns 
+df.drop_duplicates(subset = [ "c1" , "c2" ]) 
+
+df['c'].value_counts( sort = True / False ) 
+df['c'].value_counts( normalize = True ) #return proportional of total 
+var_name = df['c'].value_counts(sort=True, normalize=True)
+
+
+
+
+
+
+
