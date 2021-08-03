@@ -1,0 +1,91 @@
+import matplotlib.pyplot as plt #to display the viz 
+
+𝐘𝐨𝐮 𝐜𝐚𝐧 𝐩𝐥𝐨𝐭 𝐡𝐢𝐬𝐭𝐨𝐠𝐫𝐚𝐦𝐬 𝐟𝐨𝐫 𝐦𝐮𝐥𝐭𝐢𝐩𝐥𝐞 𝐯𝐚𝐫𝐢𝐚𝐛𝐥𝐞𝐬 𝐚𝐭 𝐚 𝐭𝐢𝐦𝐞 𝐚𝐬 𝐟𝐨𝐥𝐥𝐨𝐰𝐬:
+
+𝐝𝐨𝐠𝐬[["𝐡𝐞𝐢𝐠𝐡𝐭_𝐜𝐦", "𝐰𝐞𝐢𝐠𝐡𝐭_𝐤𝐠"]].𝐡𝐢𝐬𝐭()
+
+
+
+----------------------------------------------------------------------------------------------------
+
+df['column'].hist() 
+
+#histogram : 
+x-axis : categorical data 
+y-axis : count of values 
+
+
+df['column'].hist(bins = n ) 
+>> increasing or decreasing the num of bins gives better idea of what the distributions likes
+
+---------------------------------------------------------------------------------------------------
+𝐁𝐚𝐫 𝐩𝐥𝐨𝐭
+ can reveal relationships between 
+- categorical data
+- numeric var
+
+grouping = df.groupby('c1')['c2'].mean()
+grouping.plot(kind = 'bar' , title = "text" ) 
+--------------------------------------------------------------------------------------------------
+𝐥𝐢𝐧𝐞 𝐩𝐥𝐨𝐭𝐬:
+𝐚𝐫𝐞 𝐠𝐫𝐞𝐚𝐭 𝐟𝐨𝐫 𝐯𝐢𝐬𝐮𝐚𝐥𝐢𝐳𝐢𝐧𝐠 𝐜𝐡𝐚𝐧𝐠𝐞𝐬 𝐢𝐧 𝐧𝐮𝐦𝐞𝐫𝐢𝐜 𝐯𝐚𝐫 𝐨𝐯𝐞𝐫 𝐭𝐢𝐦𝐞
+𝐝𝐟.𝐩𝐥𝐨𝐭( 𝐱 = "𝐂𝟏" , 𝐲 = "𝐜𝟐" , 𝐤𝐢𝐧𝐝 = "𝐥𝐢𝐧𝐞" , 𝐫𝐨𝐭 = 𝐧 ) 
+𝐧 : 𝐚𝐧𝐠𝐞𝐥 𝐝𝐞𝐠𝐫𝐞𝐞 𝐭𝐨 𝐫𝐨𝐭𝐚𝐭𝐞 𝐭𝐡𝐞 𝐱 𝐚𝐱𝐢𝐬 𝐥𝐚𝐛𝐞𝐥
+
+Line plots are designed to visualize the relationship between two numeric variables, where each data values is connected to the next one. 
+They are especially useful for visualizing the change in a number over time since each time point is naturally connected to the next time point.
+--------------------------------------------------------------------------------------------------
+𝐬𝐜𝐚𝐭𝐭𝐞𝐫 𝐩𝐥𝐨𝐭𝐬
+- 𝐚𝐫𝐞 𝐠𝐫𝐞𝐚𝐭 𝐭𝐨 𝐯𝐢𝐬𝐮𝐚𝐥𝐢𝐳𝐢𝐧𝐠 𝐫𝐞𝐥𝐚𝐭𝐢𝐨𝐧𝐬𝐡𝐢𝐩𝐬 𝐛𝐞𝐭𝐰𝐞𝐞𝐧 𝐭𝐰𝐨 𝐧𝐮𝐦𝐞𝐫𝐢𝐜 𝐯𝐚𝐫𝐢𝐚𝐛𝐥𝐞𝐬
+df.plot( x "c1" , y = "c2" , kind = "scatter")
+
+
+
+
+
+Bar plots are great for revealing relationships between categorical (size) and numeric (number sold) variables,
+but you'll often have to manipulate your data first in order to get the numbers you need for plotting.
+
+--------------------------------------------------------------------------------------------------
+𝐌𝐢𝐬𝐬𝐢𝐧𝐠 𝐯𝐚𝐥𝐮𝐞𝐬
+
+Missing values are indicated as NAN ( not a number ) 
+
+
+df.isna() : return a boolen for each single value indicating wether the value is missing or not 
+
+
+#𝐌𝐢𝐬𝐬𝐢𝐧𝐠 𝐯𝐚𝐥𝐮𝐞𝐬
+
+"Missing values are indicated as NAN (not a number)"
+
+df.isna() 
+#return a boolen for each single value indicating wether the value is missing or not  
+
+
+df.isna().any()
+#we got one value for each column that tells us if there are any missing values in that column 
+
+
+df.isna().sum()
+#count the num of missing values 
+
+
+df.isna().sum().plot(kind = "bar")
+plt.show()
+#to visualize the num of missing values 
+
+
+#Remove missing values 
+df.dropna()
+"dropna method may be not ideal if you have alot of missing data since that means losing alot of observations"
+
+
+#Replacing missing values 
+df.fillna( value )
+
+"fillna method takes in a value and all NaNs will be replaced with this value"
+
+
+Another way of handling missing values is to replace them all with the same value. For numerical variables, one option is to replace values with 0— you'll do this here. However, when you replace missing values, you make assumptions about what a missing value means. In this case, you will assume that a missing number sold means that no sales for that avocado type were made that week.
+
