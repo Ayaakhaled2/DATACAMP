@@ -1,0 +1,66 @@
+There are two types of joins : mutating , filtering 
+
+
+Mutating : inner , left , right , outer , self 
+ - combine data from two tables based on matching observations on both tables 
+ 
+filtering join : Anti and semi join 
+- filter observation in one table based on whether or not they match an observation in another table 
+- ( Pandas doesnot provide direct support to filtering join )
+
+
+Filtering join types : 
+1) semi join 2) Anti join 
+
+#Semi join 
+-  semi join filter the left table down to the observations that have a match in the right table , similar to inner join 
+- return columns of the left table only 
+- no duplicates 
+
+#Semi join 
+
+df3 = df1.merge(df2 , on = 'k_column')
+df4 = df1[df1['k_column'].isin(df3['K_column'])].
+
+
+#Anti join 
+- Return the observation of the left table that do not have a matching observation in the right table "exclude the intersectin"
+- only retrun the column of the left table 
+
+to perfrom the anti join 
+step 1) left join 
+
+df3 = df1.merge(df2 , on = 'c_name' , how = 'left' , indicator = True )
+
+indicator : with the indicator set to True , the merge method adds a column called "_merge" to the output 
+- this column "_merge" tells the source of each row ( both , left_only ) 
+
+step 2 ) use loc 
+
+df4 = df3.loc[df3['_merge'] == 'left_only' , 'k_column']
+
+step 3 ) isin 
+
+ df5 = df1['k_column'].isin(df4))
+ 
+ 
+ -------------------------------- -------------------------------- --------------------------------
+ use case for Anti join 
+ 
+ Performing an anti-join
+In our music streaming company dataset, each customer is assigned an employee representative to assist them. In this exercise, 
+filter the employee table by a table of top customers, returning only those employees who are not assigned to a customer. 
+The results should resemble the results of an anti-join. The company's
+leadership will assign these employees additional training so that they can work with high valued customers.
+
+# Merge employees and top_cust
+empl_cust = employees.merge(top_cust, on='srid', 
+                            how='left', indicator=True)
+
+# Select the srid column where _merge is left_only
+srid_list = empl_cust.loc[empl_cust['_merge'] == 'left_only', 'srid']
+
+# Get employees not working with top customers
+print(employees[employees['srid'].isin(srid_list)])
+ --------------------------------
+ --------------------------------
