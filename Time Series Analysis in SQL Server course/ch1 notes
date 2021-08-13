@@ -1,0 +1,93 @@
+Time Series Analysis in SQL Server
+---------------------------------------
+Q1) 𝐔𝐬𝐞 𝐭𝐡𝐞 𝐘𝐄𝐀𝐑(), 𝐌𝐎𝐍𝐓𝐇(), 𝐚𝐧𝐝 𝐃𝐀𝐘() 𝐟𝐮𝐧𝐜𝐭𝐢𝐨𝐧𝐬 𝐭𝐨 𝐝𝐞𝐭𝐞𝐫𝐦𝐢𝐧𝐞 𝐭𝐡𝐞 𝐲𝐞𝐚𝐫, 𝐦𝐨𝐧𝐭𝐡, 𝐚𝐧𝐝 𝐝𝐚𝐲 𝐟𝐨𝐫 𝐭𝐡𝐞 𝐜𝐮𝐫𝐫𝐞𝐧𝐭 𝐝𝐚𝐭𝐞 𝐚𝐧𝐝 𝐭𝐢𝐦𝐞.
+  these functions support any date data type, including DATE, DATETIME, SMALLDATETIME, and DATETIME2.
+  
+  
+ - Although YEAR(), MONTH(), and DAY() are helpful functions and are easy to remember,
+ we often want to break out dates into different component parts such as the day of week, week of year, and second after the minute. 
+ This is where functions like DATEPART() and DATENAME() come into play.
+ 
+ https://docs.microsoft.com/en-us/sql/t-sql/functions/datepart-transact-sql
+ 
+ -- The only two date parts which differ are MONTH and WEEKDAY, which return locale-sensitive string results for DATENAME() and numeric values for DATEPART()
+ 
+ 𝐃𝐀𝐓𝐄𝐏𝐀𝐑𝐓 ( 𝐝𝐚𝐭𝐞𝐩𝐚𝐫𝐭 , 𝐝𝐚𝐭𝐞 )
+datepart	Abbreviations
+year	    yy, yyyy
+quarter	  qq, q
+month	    mm, m
+dayofyear	dy, y
+day	      dd, d
+week	    wk, ww
+weekday	  dw
+hour	    hh
+minute	  mi, n
+second	  ss, s
+millisecond	ms
+microsecond	mcs
+nanosecond	ns
+tzoffset	  tz
+iso_week	isowk, isoww
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+𝐑𝐨𝐮𝐧𝐝𝐢𝐧𝐠 𝐝𝐚𝐭𝐞𝐬
+
+SQL Server does not have an intuitive way to round down to the month, hour, or minute. You can, however, combine the DATEADD() 
+and DATEDIFF() functions to perform this rounding.
+
+To round the date 1914-08-16 down to the year, we would call DATEADD(YEAR, DATEDIFF(YEAR, 0, '1914-08-16'), 0). To round that date down to the month, 
+we would call DATEADD(MONTH, DATEDIFF(MONTH, 0, '1914-08-16'), 0). This works for several other date parts as well.
+
+𝐎𝐧𝐞 𝐭𝐡𝐢𝐧𝐠 𝐭𝐨 𝐧𝐨𝐭𝐞 𝐢𝐬 𝐭𝐡𝐚𝐭 𝐃𝐀𝐓𝐄𝐃𝐈𝐅𝐅() 𝐫𝐞𝐭𝐮𝐫𝐧𝐬 𝐚𝐧 𝐢𝐧𝐭𝐞𝐠𝐞𝐫 𝐭𝐲𝐩𝐞, 𝐬𝐨 𝐢𝐭 𝐜𝐚𝐧 𝐨𝐯𝐞𝐫𝐟𝐥𝐨𝐰 𝐢𝐟 𝐲𝐨𝐮 𝐭𝐫𝐲 𝐭𝐨 𝐫𝐨𝐮𝐧𝐝 𝐭𝐨 𝐬𝐞𝐜𝐨𝐧𝐝𝐬.
+It could overflow when rounding to minutes, but that will be after the year 5000 so we're safe for now.
+
+--------------------------------------------------------------------------------------------------------------------------
+𝐅𝐨𝐫𝐦𝐚𝐭𝐭𝐢𝐧𝐠 𝐝𝐚𝐭𝐞𝐬 𝐟𝐨𝐫 𝐫𝐞𝐩𝐨𝐫𝐭𝐢𝐧𝐠
+
+- SQL SERVER has 3 formatting options for us ( CAST , convert , format ) 
+
+1) CAST function 
+- useful for converting one datatype to another datatype including dates 
+- no control over formatting from dates to string 
+
+
+Formatting dates with FORMAT()
+The FORMAT() function allows for additional flexibility in building dates. It takes in three parameters: the input value,
+the input format, and an optional culture (such as en-US for US English or zh-cn for Simplified Chinese).
+
+
+yyyy is the format string for 4-digit year and yy is for two-digit years.
+MMM provides the short month name ("Dec") and MM the month as a two-digit value (12).
+mm gives you the number of minutes past the hour. Note that capitalization is important here, as MM is months!
+dd provides the day as a two-digit value (03).
+You can create your own dates, such as MM yy dd to generate a date like 12 08 03.
+
+
+DECLARE
+	@Python3ReleaseDate DATETIME2(3) = '2008-12-03 19:45:00.033';
+    
+SELECT
+	-- 20081203
+	FORMAT(@Python3ReleaseDate, 'yyyyMMdd') AS F1,
+	-- 2008-12-03
+	FORMAT(@Python3ReleaseDate, 'yyyy-MM-dd') AS F2,
+	-- Dec 03+2008 (the + is just a "+" character)
+	FORMAT(@Python3ReleaseDate, 'MMM dd+yyyy') AS F3,
+	-- 12 08 03 (month, two-digit year, day)
+	FORMAT(@Python3ReleaseDate, 'MM yy dd') AS F4,
+	-- 03 07:45 2008.00
+    -- (day hour:minute year.second)
+	FORMAT(@Python3ReleaseDate, 'dd hh:mm yyyy.ss') AS F5;
+  
+  
+  
+  
+  
+  
+  
+  
+  Try out a calendar table
+Calendar tables are also known in the warehousing world as date dimensions. A calendar table is a helpful utility
+table which you can use to perform date range calculations quickly and efficiently. This is especially true when dealing with fiscal years,
+
+which do not always align to a calendar year, or holidays which may not be on the same date every year.
